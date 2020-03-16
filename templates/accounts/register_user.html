@@ -1,0 +1,35 @@
+{% extends 'layout/layout.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+        <h1 class="h3 mb-3 font-weight-normal">Register Account</h1>
+    <form method="POST">
+    {% csrf_token %}
+  <div class="form-group">
+    <label for="exampleInputEmail1">Email address:</label>
+    <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+  </div>
+            <div class="form-group">
+    <label for="username">Username:</label>
+    <input type="text" name="username" class="form-control" id="username" placeholder="Enter Username">
+  </div>
+  <div class="form-group">
+    <label for="Password1">Password:</label>
+    <input type="password" name="password1" class="form-control" id="password1" placeholder="Password">
+  </div>
+          <div class="form-group">
+    <label for="Password2">Confirm Password:</label>
+    <input type="password" name="password2" class="form-control" id="password2" placeholder="Confirm Password">
+  </div>
+  {% for field in registration_form %}
+            {% for error in field.errors %}
+                <small class="text-danger">{{ error }}</small>
+            {% endfor %}
+  {% endfor %}
+        {% if registration_form.non_field_errors %}
+            <div>
+            <p class="text-danger">{{ registration_form.non_field_errors }}</p>
+            </div>
+        {% endif %}
+  <button type="submit" class="btn btn-success">Signup</button>
+    </form>
+{% endblock %}

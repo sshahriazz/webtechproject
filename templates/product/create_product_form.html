@@ -1,0 +1,70 @@
+{% extends 'layout/layout.html' %}
+{% block content %}
+    <h1>Add item to Shop</h1>
+    {% if custom_user.is_shop_owner %}
+        <form method="POST" enctype="multipart/form-data">{% csrf_token %}
+            <div class="form-group">
+                <label for="item_name">Item Name:</label>
+                <input type="text" name="item_name" class="form-control" id="item_name" aria-describedby="item_name"
+                       required autofocus>
+            </div>
+            <div class="form-group">
+                <label for="item_description">Item Description(5000)</label>
+                <textarea name="item_description" class="form-control" id="item_description"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="item_regular_price">Regular Price:</label>
+                <input type="number" name="item_regular_price" class="form-control" id="item_regular_price"
+                       aria-describedby="item_regular_price"
+                       required>
+            </div>
+
+            <div class="form-group">
+                <label for="item_discounted_price">Discounted Price:</label>
+                <input type="number" name="item_discounted_price" class="form-control" id="item_discounted_price"
+                       aria-describedby="item_discounted_price"
+                       required>
+            </div>
+            <div class="form-group">
+                <label for="item_quantity">Item Quantity:</label>
+                <input type="number" name="item_quantity" class="form-control" id="item_quantity"
+                       aria-describedby="item_discounted_price"
+                       required>
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Image-1</span>
+                </div>
+
+                <div class="custom-file">
+                    <input type="file" name="item_image1" class="custom-file-input">
+                    <label class="custom-file-label">Choose file</label>
+                </div>
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Image-2</span>
+                </div>
+
+                <div class="custom-file">
+                    <input type="file" name="item_image2" class="custom-file-input">
+                    <label class="custom-file-label">Choose file</label>
+                </div>
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Image-3</span>
+                </div>
+
+                <div class="custom-file">
+                    <input type="file" name="item_image3" class="custom-file-input">
+                    <label class="custom-file-label">Choose file</label>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Create Shop</button>
+        </form>
+    {% else %}
+        <p>You are not a shop owner.</p>
+    {% endif %}
+{% endblock %}

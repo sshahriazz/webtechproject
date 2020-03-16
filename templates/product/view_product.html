@@ -1,0 +1,11 @@
+{% extends 'layout/layout.html' %}
+{% block content %}
+    <h1>Product view</h1>
+    {% for item in shop_item %}
+        <p>
+        {{ item.item_from_shop.shop_name }}</p>
+        <p>{{ item.item_name }}</p>
+        <p>{{ item.item_description }}</p>
+        <img src="{{ item.item_image1.url }}" height="300" width="400" alt="itemImage1">
+    {% endfor %}
+{% endblock %}

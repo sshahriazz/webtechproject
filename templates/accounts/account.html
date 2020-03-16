@@ -1,0 +1,28 @@
+{% extends 'layout/layout.html' %}
+{% block content %}
+    <h1 class="h3 mb-3 font-weight-normal">Account</h1>
+ <form method="POST">
+ {% if success_message %}
+ {{ success_message }}
+ {% endif %}
+    {% csrf_token %}
+  <div class="form-group">
+    <label for="email">Email address:</label>
+    <input type="email" value="{{account_form.initial.email}}" name="email" class="form-control" id="inputEmail" aria-describedby="emailHelp" placeholder="Enter email" required>
+  </div>
+  <div class="form-group">
+    <label for="username">Username:</label>
+    <input type="text" value="{{account_form.initial.username}}" name="username" id="inputUsername" class="form-control" placeholder="Username" required>
+  </div>
+  {% for field in account_form %}
+            {% for error in field.errors %}
+                <small class="text-danger">{{ error }}</small>
+            {% endfor %}
+  {% endfor %}
+        {% if account_form.non_field_errors %}
+            <p class="text-danger">{{ account_form.non_field_errors }}</p>
+        {% endif %}
+  <button type="submit" class="btn btn-primary">Save Changes</button>
+</form>
+
+{% endblock %}

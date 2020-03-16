@@ -1,0 +1,10 @@
+{% extends 'layout/layout.html' %}
+{% block content %}
+    <div class="container">
+        <div class="d-flex flex-column">
+            <p class="m-auto">Must be authenticated to view this page.</p>
+            <a class="m-auto" href="{% url 'accounts:register' %}">Signup</a>
+            <a class="m-auto" href="{% url 'accounts:login' %}">Login</a>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'layout/layout.html' %}
+{% block content %}
+    <h1>Create Shop</h1>
+    {% if custom_user.is_shop_owner %}
+        <p>You already have a shop</p>
+        {% else %}
+        <form method="POST" enctype="multipart/form-data">{% csrf_token %}
+        <div class="form-group">
+            <label for="shop_name">Shop Name:</label>
+            <input type="text" name="shop_name" class="form-control" id="shop_name" aria-describedby="shop_name" required autofocus>
+        </div>
+        <div class="form-group">
+            <label for="shop_info">Shop Description(5000)</label>
+            <textarea name="shop_description" class="form-control" id="shop_info"></textarea>
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text">Upload</span>
+            </div>
+
+        <div class="custom-file">
+            <input type="file" name="shop_front_image" class="custom-file-input">
+            <label class="custom-file-label">Choose file</label>
+        </div>
+        </div>
+            <button type="submit" class="btn btn-primary">Create Shop</button>
+    </form>
+    {% endif %}
+
+{% endblock %}
