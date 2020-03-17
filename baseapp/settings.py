@@ -25,7 +25,6 @@ INSTALLED_APPS = [
     'shops',
     'product',
     'crispy_forms',
-    'location_field.apps.DefaultConfig',
 ]
 
 MIDDLEWARE = [

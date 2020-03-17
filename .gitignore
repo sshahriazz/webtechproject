@@ -2,7 +2,7 @@
 __pycache__/
 *.py[cod]
 *$py.class
-
+.vscode/
 # C extensions
 *.so
 .idea/
@@ -123,3 +123,6 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+product/migrations/
+accounts/migrations/
+shops/migrations/
